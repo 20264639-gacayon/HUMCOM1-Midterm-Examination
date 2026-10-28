@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HUMCOM - Services</title>
+</head>
+<body bgcolor="#000000">
+<div align="center"><font face="Arial Rounded MT Bold, Varela Round, Nunito, Quicksand, Comic Sans MS, sans-serif" color="#ff69b4">
+
+  <!-- HEADER -->
+  <table align="center" width="100%" bgcolor="#1a001a" cellpadding="8">
+    <tr>
+      <td align="center" width="100"><img src="nga.png" alt="[Placeholder: Services logo]" width="80" height="80"></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <a href="index.html"><font color="#ff1493">Home</font></a> | 
+        <a href="about.html"><font color="#ff1493">About</font></a> | 
+        <a href="services.html"><font color="#ff1493">Services</font></a> | 
+        <a href="media.html"><font color="#ff1493">Media</font></a> | 
+        <a href="contact.html"><font color="#ff1493">Contact</font></a>
+      </td>
+    </tr>
+  </table>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1><font color="#ff69b4">Services</font></h1>
+    <h2><font color="#ff1493">Our Services</font></h2>
+    <p>Select a service to add to your cart.</p>
+
+    <form action="#" method="post" id="servicesForm">
+      <table align="center" border="1" cellpadding="6" cellspacing="0" bordercolor="#ff69b4">
+        <tr bgcolor="#1a001a">
+          <th>Select</th>
+          <th>Photo</th>
+          <th>Service</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Qty</th>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" name="svc1" id="svc1" value="500" onchange="calculateTotal()"></td>
+          <td align="center"><img src="nga.png" alt="[Placeholder: service 1]" width="80" height="60"></td>
+          <td align="center">Service 1</td>
+          <td align="center">Description here</td>
+          <td align="center">₱500</td>
+          <td align="center"><input type="number" name="qty1" id="qty1" min="0" value="1" size="3" onchange="calculateTotal()"></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" name="svc2" id="svc2" value="1000" onchange="calculateTotal()"></td>
+          <td align="center"><img src="nga.png" alt="[Placeholder: service 2]" width="80" height="60"></td>
+          <td align="center">Service 2</td>
+          <td align="center">Description here</td>
+          <td align="center">₱1,000</td>
+          <td align="center"><input type="number" name="qty2" id="qty2" min="0" value="1" size="3" onchange="calculateTotal()"></td>
+        </tr>
+        <tr>
+          <td align="center"><input type="checkbox" name="svc3" id="svc3" value="1500" onchange="calculateTotal()"></td>
+          <td align="center"><img src="nga.png" alt="[Placeholder: service 3]" width="80" height="60"></td>
+          <td align="center">Service 3</td>
+          <td align="center">Description here</td>
+          <td align="center">₱1,500</td>
+          <td align="center"><input type="number" name="qty3" id="qty3" min="0" value="1" size="3" onchange="calculateTotal()"></td>
+        </tr>
+        <tr bgcolor="#1a001a">
+          <td colspan="4" align="right"><b>Total</b></td>
+          <td align="center" colspan="2"><b id="totalDisplay">₱0.00</b></td>
+        </tr>
+      </table>
+
+      <p>
+        <input type="submit" value="Add to Cart"> 
+        <input type="reset" value="Clear" onclick="resetTotal()">
+      </p>
+    </form>
+  </main>
+
+  <hr color="#ff69b4">
+
+  <!-- FOOTER -->
+  <table align="center" width="100%" bgcolor="#1a001a" cellpadding="8">
+    <tr>
+      <td align="center">&copy; 2026 HUMCOM. All rights reserved.</td>
+    </tr>
+  </table>
+
+</font></div>
+
+<script>
+  function calculateTotal() {
+    let total = 0;
+
+    // Service 1
+    if (document.getElementById("svc1").checked) {
+      let qty1 = parseInt(document.getElementById("qty1").value) || 0;
+      total += 500 * qty1;
+    }
+
+    // Service 2
+    if (document.getElementById("svc2").checked) {
+      let qty2 = parseInt(document.getElementById("qty2").value) || 0;
+      total += 1000 * qty2;
+    }
+
+    // Service 3
+    if (document.getElementById("svc3").checked) {
+      let qty3 = parseInt(document.getElementById("qty3").value) || 0;
+      total += 1500 * qty3;
+    }
+
+    // Display total with peso sign and comma
+    document.getElementById("totalDisplay").innerHTML = "₱" + total.toLocaleString("en-PH", {minimumFractionDigits: 2});
+  }
+
+  function resetTotal() {
+    document.getElementById("totalDisplay").innerHTML = "₱0.00";
+  }
+</script>
+
+</body>
+</html>
